@@ -7,13 +7,13 @@ import javafx.geometry.Point2D;
 
 public class FlowerBed implements Orchard{
     Rectangle rect = new Rectangle();
-    boolean movable;
-    List<Orchard> flowers = new ArrayList<Orchard>();
+    boolean mov;
+    List<Orchard> flowerbeds = new ArrayList<Orchard>();
 
 
-    public FlowerBed(Point2D point,Color color,boolean bool) {
-  //  public FlowerBed(double x, double y, double width, double height,boolean flag) {
-        this.movable = true;
+    public FlowerBed(Point2D point,Color color,boolean bool) { //constructor of flowerbed
+
+        this.mov = true;
         rect.setX(point.getX());
         rect.setY(point.getY());
         rect.setHeight(100);
@@ -23,10 +23,10 @@ public class FlowerBed implements Orchard{
         rect.setStrokeWidth(5);
     }
     @Override
-    public void move(double dx, double dy) {
+    public void move(double dx, double dy) { //method to get new coordinates of rectangle
         rect.setX(rect.getX()+dx);
         rect.setY(rect.getY()+dy);
-        for (Orchard flower : flowers) {
+        for (Orchard flower : flowerbeds) {
             flower.move(dx, dy);
         }
     }
@@ -43,7 +43,7 @@ public class FlowerBed implements Orchard{
     }
     public void addchild(Orchard garden) {
 
-        flowers.add(garden);
+        flowerbeds.add(garden);
 
     }
 

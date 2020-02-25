@@ -25,20 +25,21 @@ public class Main extends Application {
     Orchard garden;
     AnchorPane root;
     Scene scene;
-
+//start Method
     @Override
     public void start(Stage primaryStage) {
-
+//creating object of flower class
         Flower flower1 = new Flower(new Point2D(20,50),Color.BURLYWOOD,true);
-        // Flower flower2 = new Flower(a,Color.PALETURQUOISE,true);
+// creating object of flowrbed
         FlowerBed flowerbed = new FlowerBed(new Point2D(50,50),Color.GREEN,true);
         root = new AnchorPane();
+// Creating scene
         scene = new Scene(root, 600, 600);
         scene.setFill(Color.LAVENDERBLUSH);
+// adding objects to the list
         Items.add(flower1);
         Items.add(flowerbed);
-        //root.getChildren().addAllflowerbed.getRectangle());
-        //root.getChildren().add(flower2.getCircle());
+// adding shapes to the root
         root.getChildren().add(flowerbed.getRectangle());
         root.getChildren().add(flower1.getCircle());
 
@@ -59,22 +60,19 @@ public class Main extends Application {
 
                 String eventName = mouseEvent.getEventType().getName();
                 if (!dragging) {
-                    garden = getComponent();
+                    garden = getShape();
                 }
                 switch (eventName) {
-                    case ("MOUSE_DRAGGED"):
+                    case ("MOUSE_DRAGGED"):// case for mouse button pressed
 
                         if (Items != null && lastPosition != null && garden != null) {
                             dragging = true;
                             double deltaX = clickPoint.getX() - lastPosition.getX();
                             double deltaY = clickPoint.getY() - lastPosition.getY();
                             garden.move(deltaX, deltaY);
-                            //flowerbed.move(deltaX, deltaY);
-                            //flower1.move(deltaX,deltaY);
-                            //flower2.move(deltaX,deltaY);
                         }
                         break;
-                    case ("MOUSE_RELEASED"):
+                    case ("MOUSE_RELEASED"): //case for mouse button released
                         if (Items != null && garden instanceof Flower) {
                             for (Orchard shape : Items) {
                                 if (shape instanceof FlowerBed && shape.ContainsPoint(clickPoint)) {
@@ -91,7 +89,7 @@ public class Main extends Application {
 
 
 
-    private Orchard getComponent(){
+    private Orchard getShape(){
         Orchard Component = null;
         for(Orchard shape: Items){
             if (shape.ContainsPoint(clickPoint)){
