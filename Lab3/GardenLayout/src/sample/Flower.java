@@ -9,16 +9,30 @@ import javafx.scene.shape.Circle;
 public class Flower implements Orchard{
 
     Circle circle;
-    public Flower(Point2D b,Color RED, boolean c) {
+    boolean movable;
+    public Flower(Point2D b,Color c, boolean bool) {
         circle = new Circle();
+        this.movable = bool;
         circle.setCenterX(b.getX());
         circle.setCenterY(b.getY());
         circle.setRadius(10);
-        circle.setFill(Color.BLUE);
+        circle.setFill(c.darker());
         circle.setStroke(Color.BLACK);
-        circle.setStrokeWidth(1);
+        circle.setStrokeWidth(4);
 
 
+    }
+
+    public void setCircle(Circle circle) {
+        this.circle = circle;
+    }
+
+    public boolean isMovable() {
+        return movable;
+    }
+
+    public void setMovable(boolean movable) {
+        this.movable = movable;
     }
 
     public Circle getCircle() {

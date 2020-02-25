@@ -7,16 +7,20 @@ import javafx.geometry.Point2D;
 
 public class FlowerBed implements Orchard{
     Rectangle rect = new Rectangle();
+    boolean movable;
     List<Orchard> flowers = new ArrayList<Orchard>();
 
-    public FlowerBed(double x, double y, double width, double height) {
-        rect.setX(x);
-        rect.setY(y);
-        rect.setHeight(height);
-        rect.setWidth(width);
-        rect.setFill(Color.WHITE);
+
+    public FlowerBed(Point2D point,Color color,boolean bool) {
+  //  public FlowerBed(double x, double y, double width, double height,boolean flag) {
+        this.movable = true;
+        rect.setX(point.getX());
+        rect.setY(point.getY());
+        rect.setHeight(100);
+        rect.setWidth(80);
+        rect.setFill(color.brighter());
         rect.setStroke(Color.BLACK);
-        rect.setStrokeWidth(1);
+        rect.setStrokeWidth(5);
     }
     @Override
     public void move(double dx, double dy) {

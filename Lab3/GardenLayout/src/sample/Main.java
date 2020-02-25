@@ -19,9 +19,7 @@ public class Main extends Application {
     Point2D lastPosition = null;
     Point2D clickPoint;
     boolean dragging = false;
-    Flower flower1 = new Flower(new Point2D(20,50),Color.BLACK,true);
-   // Flower flower2 = new Flower(a,Color.PALETURQUOISE,true);
-    FlowerBed flowerbed = new FlowerBed(50,50,50,50);
+
     List<Orchard>Items = new ArrayList<Orchard>();
 
     Orchard garden;
@@ -31,23 +29,30 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-
+        Flower flower1 = new Flower(new Point2D(20,50),Color.BURLYWOOD,true);
+        // Flower flower2 = new Flower(a,Color.PALETURQUOISE,true);
+        FlowerBed flowerbed = new FlowerBed(new Point2D(50,50),Color.GREEN,true);
         root = new AnchorPane();
         scene = new Scene(root, 600, 600);
-        scene.setFill(Color.SEAGREEN);
+        scene.setFill(Color.LAVENDERBLUSH);
         Items.add(flower1);
         Items.add(flowerbed);
-        root.getChildren().add(flower1.getCircle());
+        //root.getChildren().addAllflowerbed.getRectangle());
         //root.getChildren().add(flower2.getCircle());
         root.getChildren().add(flowerbed.getRectangle());
+        root.getChildren().add(flower1.getCircle());
 
+        scene.setOnMouseDragged(mouseHandler);
+        scene.setOnMouseReleased(mouseHandler);
+        scene.setOnMousePressed(mouseHandler);
 
         primaryStage.setScene(scene);
         primaryStage.show();
 
+    }
 
         EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
-            @Override
+            //@Override
             public void handle(MouseEvent mouseEvent) {
                 clickPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
                 System.out.println(clickPoint.getX() + " " + clickPoint.getY());
@@ -68,7 +73,7 @@ public class Main extends Application {
                             //flower1.move(deltaX,deltaY);
                             //flower2.move(deltaX,deltaY);
                         }
-
+                        break;
                     case ("MOUSE_RELEASED"):
                         if (Items != null && garden instanceof Flower) {
                             for (Orchard shape : Items) {
@@ -83,10 +88,8 @@ public class Main extends Application {
                 lastPosition = clickPoint;
             }
         };
-        scene.setOnMouseDragged(mouseHandler);
-        scene.setOnMouseReleased(mouseHandler);
-        scene.setOnMousePressed(mouseHandler);
-    }
+
+
 
     private Orchard getComponent(){
         Orchard Component = null;
