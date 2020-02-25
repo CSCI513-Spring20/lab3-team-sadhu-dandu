@@ -30,4 +30,8 @@ public class Flower implements Orchard{
         circle.setCenterY(circle.getCenterY()+dy);
 
     }
+    @Override
+    public boolean ContainsPoint(Point2D point) {
+        return (circle.contains(point));
+    }
 }

@@ -1,7 +1,9 @@
 package sample;
-
+import javafx.geometry.Point2D;
 public interface Orchard {
-    public default void move(double x,double y ) {
+    public   void move(double dx,double dy);
 
-    }
+    boolean ContainsPoint(Point2D point);
+
+
 }
